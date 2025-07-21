@@ -1,0 +1,226 @@
+/* Routing Panel Styles */
+.routing-panel-container {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.routing-panel-header {
+  position: relative;
+  overflow: hidden;
+}
+
+.routing-panel-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+.routing-input:focus {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+.routing-draw-button:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.routing-mode-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.routing-mode-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.routing-mode-button:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+.routing-route-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.routing-route-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.routing-route-button:hover::before {
+  left: 100%;
+}
+
+.routing-reset-button:hover {
+  background-color: #fee2e2 !important;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+.routing-swap-button:hover {
+  background-color: #f3f4f6 !important;
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+}
+
+.routing-drawing-status {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.routing-route-results {
+  animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.routing-loading-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .routing-panel-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 0 !important;
+  }
+  
+  .routing-transport-modes {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .routing-panel-container {
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+  }
+  
+  .routing-panel-header {
+    background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%) !important;
+  }
+  
+  .routing-input {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #f9fafb !important;
+  }
+  
+  .routing-input:focus {
+    border-color: #6366f1 !important;
+    background-color: #1f2937 !important;
+  }
+  
+  .routing-draw-button {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #f9fafb !important;
+  }
+  
+  .routing-mode-button {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+    color: #f9fafb !important;
+  }
+  
+  .routing-traffic-toggle {
+    background-color: #374151 !important;
+    border-color: #4b5563 !important;
+  }
+  
+  .routing-toggle-label {
+    color: #f9fafb !important;
+  }
+  
+  .routing-label {
+    color: #f9fafb !important;
+  }
+}
+
+/* Accessibility Improvements */
+.routing-input:focus,
+.routing-draw-button:focus,
+.routing-mode-button:focus,
+.routing-route-button:focus,
+.routing-reset-button:focus,
+.routing-swap-button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .routing-panel-container {
+    border: 2px solid #000000;
+  }
+  
+  .routing-input {
+    border: 2px solid #000000;
+  }
+  
+  .routing-draw-button,
+  .routing-mode-button {
+    border: 2px solid #000000;
+  }
+} 
